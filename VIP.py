@@ -151,18 +151,18 @@ async def attack(update: Update, context: CallbackContext):
     await context.bot.send_message(
     chat_id=chat_id,
     text=(
-        f"*💀 WARNING: THE END IS NIGH! 💀*\n"
+        f"*💀 PAPA - HIMANSHU 💀*\n"
         f"*🎯 Target Locked: {ip}:{port}*\n"
         f"*⏳ Countdown: {duration} seconds*\n"
-        f"*🔥 Get ready for pure devastation. 💥*\n"
-        f"*⚠️ You’ve just signed your death warrant. ⚠️*"
+        f"*🔥 Get ready for disaster. 💥*\n"
+        f"*⚠️ PAPA - HIMANSHU. ⚠️*"
     ),
     parse_mode='Markdown'
 )
     asyncio.create_task(run_attack(chat_id, ip, port, duration, context))
 async def papa_bol(update: Update, context: CallbackContext):
     user_id = update.effective_user.id 
-    message = f"MADARCHOD KA ID HAI: `{user_id}`" 
+    message = f"BHAIN KE LAND HAR KAM MAI HE KARU KYA: `{user_id}`" 
     await context.bot.send_message(chat_id=update.effective_chat.id, text=message, parse_mode='Markdown')
 async def run_attack(chat_id, ip, port, duration, context):
     try:
@@ -186,7 +186,7 @@ async def generate_redeem_code(update: Update, context: CallbackContext):
     if user_id != ADMIN_USER_ID:
         await context.bot.send_message(
             chat_id=update.effective_chat.id, 
-            text="*❌ You are not authorized to generate redeem codes!*", 
+            text="*❌ Only papa can do this!*", 
             parse_mode='Markdown'
         )
         return
@@ -263,13 +263,13 @@ async def redeem_code(update: Update, context: CallbackContext):
     if expiry_date.tzinfo is None:
         expiry_date = expiry_date.replace(tzinfo=timezone.utc)  
     if expiry_date <= datetime.now(timezone.utc):
-        await context.bot.send_message(chat_id=chat_id, text="*❌ This redeem code has expired.*", parse_mode='Markdown')
+        await context.bot.send_message(chat_id=chat_id, text="*❌ Papa se aur Sperm leke aa.*", parse_mode='Markdown')
         return
     if redeem_entry['redeem_count'] >= redeem_entry['max_uses']:
-        await context.bot.send_message(chat_id=chat_id, text="*❌ This redeem code has already reached its maximum number of uses.*", parse_mode='Markdown')
+        await context.bot.send_message(chat_id=chat_id, text="*❌ Papa ka sperm bhot logo ne use karliya kush khud bhe karlo.*", parse_mode='Markdown')
         return
     if user_id in redeem_entry['used_by']:
-        await context.bot.send_message(chat_id=chat_id, text="*❌ You have already redeemed this code.*", parse_mode='Markdown')
+        await context.bot.send_message(chat_id=chat_id, text="*❌ Abhe bhen ke land dimag khabar mt kr tune pehle se redeem kr liya.*", parse_mode='Markdown')
         return
     users_collection.update_one(
         {"user_id": user_id},
@@ -287,7 +287,7 @@ async def delete_code(update: Update, context: CallbackContext):
     if user_id != ADMIN_USER_ID:
         await context.bot.send_message(
             chat_id=update.effective_chat.id, 
-            text="*❌ You are not authorized to delete redeem codes!*", 
+            text="*❌ Only papa can do this!*", 
             parse_mode='Markdown'
         )
         return
